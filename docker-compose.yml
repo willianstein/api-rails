@@ -1,0 +1,56 @@
+version: '3.7'
+x-env: &env
+  REDIS_URL: redis://redis:6379/0
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+
+x-app: &app
+  build: .
+  stdin_open: true
+  tty: true
+  volumes:
+    - bundle_cache:/bundle
+    - .:/app
+    - ~/.ssh:/root/.ssh
+  environment:
+    <<: *env
+
+  depends_on:
+    - pg
+    - redis
+services:
+  pg:
+    image: mdillon/postgis
+    environment:
+      <<: *env
+    volumes:
+      - ./docker/postgres/data:/var/lib/postgresql/data
+    ports:
+      - "5434:5440"
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+  server:
+    <<: *app
+    command: bin/rails s -b 0.0.0.0 -p 5000
+    ports:
+      - "5000:5000"
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@admin"
+      PGADMIN_DEFAULT_PASSWORD: "123123123"
+    ports:
+      - "16543:80"
+    depends_on:
+      - pg
+volumes:
+  bundle_cache:
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.57.0/24
+
