@@ -1,0 +1,13 @@
+[
+    { "id":1, "name": "Curitiba", "state_id": 1},
+    { "id":2, "name": "Araucária", "state_id": 1},
+    { "id":3, "name": "Fazenda rio grande", "state_id": 1}, 
+
+    { "id":4, "name": "Florianopolis", "state_id": 2},
+    { "id":5, "name": "Brusque", "state_id": 2},
+    { "id":6, "name": "Chapecó", "state_id": 2},
+
+    { "id":7, "name": "Porto alegre", "state_id": 3},
+    { "id":8, "name": "Gramado", "state_id": 3},
+    { "id":9, "name": "Caxias do sul", "state_id": 3} 
+]

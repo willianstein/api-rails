@@ -5,3 +5,31 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+def load_seeds
+   load_countries
+   load_states
+   load_cities
+end
+
+def load_countries
+    load_seed 'countries.json' do |country|
+        Country.find_or_create_by(country)
+    end
+end
+
+def load_states
+    load_seed 'states.json' do |state|
+        State.find_or_create_by(state)
+    end
+end
+
+def load_cities
+    load_seed 'cities.json' do |city|
+        City.find_or_create_by(city)
+    end
+end
+
+load_seeds
+$stdout.flush
