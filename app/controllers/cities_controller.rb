@@ -1,13 +1,20 @@
 class CitiesController < ApplicationController
   before_action :set_city, only: %i[ show edit update destroy ]
 
-  # GET /cities or /cities.json
+  # GET /cities?name or /cities.json
   def index
-    @cities = City.all
+    @cities = if params[:name]
+      City.where('name ilike ?', "%#{params[:name]}%")
+    
+    else
+      City.all
+    end  
+    puts @cities.inspect
   end
 
   # GET /cities/1 or /cities/1.json
   def show
+
   end
 
   # GET /cities/new

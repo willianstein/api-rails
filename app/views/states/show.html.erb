@@ -7,8 +7,25 @@
 
 <p>
   <strong>Country:</strong>
-  <%= @state.country %>
+  <%= @state.country.name %>
 </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @state.cities.each do |city| %>
+      <tr>
+        <td><%= city.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 
 <%= link_to 'Edit', edit_state_path(@state) %> |
 <%= link_to 'Back', states_path %>
