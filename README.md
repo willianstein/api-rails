@@ -1,43 +1,70 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+instalar o docker na maquina 
+rodar o seguinte comando 
+docker compose(docker-compose) up -d --build
+apos entrar no navegador http://localhost:5000/
 
-Things you may want to cover:
+ele retorna um erro pedindo para criar o banco de dados
 
-* Ruby version
+entre no pg admin http://localhost:16543/
+usuario admin@admin.com.br
+senha 123123123
 
-* System dependencies
+nele precisa criar um servidor, click no Add new server
+após vai pedir o nome do servidor(aba general, pode colocar qual nome quiser)
+ex: teste
+na aba connection
+host: SEU IP
+port:5432
+username: postgres
+password: postgres
+apos cria a base de dados click com o botao direito e crie a base de dados(test_app_development)
 
-* Configuration
+OU
 
-* Database creation
+se preferir tem o omnidb
+link http://localhost:8091/omnidb_login/?next=/workspace/
+usuario: admin 
+senha: admin
 
-* Database initialization
+vai ate conexao cria uma nova conexao tipo postgres
+server: SEU IP
+port: 5432
+database:postgres
+user:postgres
+userpassword:postgres
+crie a tabela test_app_development
+apos cria a base de dados click com o botao direito e crie a base de dados(test_app_development)
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+se deu tudo certo ate aqui entre no rails do docker
+docker exec -it ex:test-rails-server-1(nome container) bash
+se não souber o nome rode o comando docker ps ali vai ter o nome do container docker verifique o container pelo porta 5000
+e repete o comando docker exec -it (nome container) bash
 
-* Deployment instructions
-
-* ...
-
+dentro do container vamos criar:
 
 migrations
-bin/rails db:migrate RAILS_ENV=development
+rake db:migrate RAILS_ENV=development
 
-rota para busca de estados
-http://localhost:5000/states?name=para
+seeds
+rake db:seed
 
-rota para busca por cidades
-http://localhost:5000/cities?name=arau
+se deu tudo certo ate aqui so entrar nos links
 
 mostrar todas cidades
 http://localhost:5000/cities
+(clicando no nome do estado ele vai para a tela com todas as cidades do estado)
 
 mostrar todos os estado 
 http://localhost:5000/states
 
 mostrar todos paises
 http://localhost:5000/countries
+
+rota para busca de estados pelo nome (substitua ex:name=rio)
+http://localhost:5000/states?name=para
+
+rota para busca por cidades (substitua ex:name=cur)
+http://localhost:5000/cities?name=arau
