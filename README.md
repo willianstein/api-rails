@@ -68,3 +68,17 @@ http://localhost:5000/states?name=para
 
 rota para busca por cidades (substitua ex:name=cur)
 http://localhost:5000/cities?name=arau
+
+
+para rodar os testes entre dentro do docker(docker exec -it ex:test-rails-server-1(nome container) bash)
+
+rode os seguintes comando para criar tabelas de testes
+bundle exec rake db:drop RAILS_ENV=test
+bundle exec rake db:create RAILS_ENV=test
+bundle exec rake db:schema:load RAILS_ENV=test
+
+apos rode o seguinte comando para criar dados fake no banco de teste
+RAILS_ENV=test FIXTURES_PATH="spec/fixtures" rails db:fixtures:load
+
+para testar os testes rode o comando 
+rspec
