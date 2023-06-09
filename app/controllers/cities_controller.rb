@@ -5,11 +5,9 @@ class CitiesController < ApplicationController
   def index
     @cities = if params[:name]
       City.where('name ilike ?', "%#{params[:name]}%")
-    
     else
       City.all
-    end  
-    # puts @cities.inspect
+    end 
   end
 
   # GET /cities/1 or /cities/1.json
