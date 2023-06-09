@@ -3,7 +3,12 @@ class StatesController < ApplicationController
 
   # GET /states or /states.json
   def index
-    @states = State.all
+    @states = if params[:name]
+      State.where('name ilike ?', "%#{params[:name]}%")
+    else
+      State.all
+    end  
+    #  puts @states.inspect
   end
 
   # GET /states/1 or /states/1.json

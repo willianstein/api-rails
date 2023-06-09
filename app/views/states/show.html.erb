@@ -1,19 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nome:</strong>
   <%= @state.name %>
 </p>
 
 <p>
-  <strong>Country:</strong>
+  <strong>País:</strong>
   <%= @state.country.name %>
 </p>
 
 <table>
   <thead>
     <tr>
-      <th>Nome</th>
+      <th>Nome das cidades</th>
     </tr>
   </thead>
 
@@ -26,6 +26,4 @@
   </tbody>
 </table>
 
-
-<%= link_to 'Edit', edit_state_path(@state) %> |
-<%= link_to 'Back', states_path %>
+<%= link_to 'Voltar', states_path %>

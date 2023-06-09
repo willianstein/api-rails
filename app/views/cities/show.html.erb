@@ -6,9 +6,8 @@
 </p>
 
 <p>
-  <strong>State:</strong>
-  <%= @city.state %>
+  <strong>Estado:</strong>
+  <%= @city.state.name %>
 </p>
 
-<%= link_to 'Edit', edit_city_path(@city) %> |
-<%= link_to 'Back', cities_path %>
+<%= link_to 'Voltar', cities_path %>

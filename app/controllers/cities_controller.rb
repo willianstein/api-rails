@@ -9,7 +9,7 @@ class CitiesController < ApplicationController
     else
       City.all
     end  
-    puts @cities.inspect
+    # puts @cities.inspect
   end
 
   # GET /cities/1 or /cities/1.json

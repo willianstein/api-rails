@@ -26,3 +26,18 @@ Things you may want to cover:
 
 migrations
 bin/rails db:migrate RAILS_ENV=development
+
+rota para busca de estados
+http://localhost:5000/states?name=para
+
+rota para busca por cidades
+http://localhost:5000/cities?name=arau
+
+mostrar todas cidades
+http://localhost:5000/cities
+
+mostrar todos os estado 
+http://localhost:5000/states
+
+mostrar todos paises
+http://localhost:5000/countries
